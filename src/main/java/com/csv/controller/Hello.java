@@ -8,7 +8,7 @@ public class Hello {
 	
 	@GetMapping("home")
 	String index() {
-		return "ola";
+		return "login";
 	}
 
 }
