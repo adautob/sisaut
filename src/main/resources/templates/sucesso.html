@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index Page</title>
+</head>
+<body>
+	<h3>Bem-vindo</h3>
+	<p >
+		Usuário <span th:text="${session.usuario}"
+			th:unless="${session == null}"> </span> logado com sucesso
+	</p>
+	<a class="btn btn-primary btn-sm" th:href="logout">Logout</a>
+</body>
+</html>

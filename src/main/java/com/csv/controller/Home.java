@@ -1,29 +1,44 @@
 package com.csv.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/")
 public class Home {
-	
+
 	@GetMapping("login")
-	String login() {
-		return "login";
-	}
-	
-	@PostMapping("logar")
-	String logar(String usuario, String senha) {
-		boolean logou = false;
-		logou =  (usuario.equals("admin")&&senha.equals("admin"));
-		
-		if (logou) return "redirect:index";
-		else return "login";
-	}
-	
-	@GetMapping("index")
-	String index() {
+	public String login() {
 		return "index";
 	}
+
+	@PostMapping("index")
+	public String index(
+			@RequestParam("usuario") String usuario,
+			@RequestParam("senha") String senha,
+			HttpSession session,
+			ModelMap modelMap) {
+
+		if (usuario.equals("admin") && senha.equals("admin")) {
+			session.setAttribute("usuario", usuario);
+			return ("sucesso");
+		} else {
+			modelMap.put("erro", "Usuário ou senha inválidos!");
+			return ("index");
+		}
+	}
+	
+	@GetMapping("logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("usuario");
+		return "redirect:login";
+	}
+
 
 }
