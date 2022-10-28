@@ -10,15 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/")
 public class Home {
 
-	@GetMapping("login")
+	@GetMapping("/sisaut/login")
 	public String login() {
 		return "index";
 	}
 
-	@PostMapping("index")
+	@PostMapping("/index")
 	public String index(
 			@RequestParam("usuario") String usuario,
 			@RequestParam("senha") String senha,
@@ -34,10 +33,10 @@ public class Home {
 		}
 	}
 	
-	@GetMapping("logout")
+	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("usuario");
-		return "redirect:login";
+		return "index";
 	}
 
 
