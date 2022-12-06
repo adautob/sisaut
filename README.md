@@ -5,7 +5,7 @@
 
 Sisaut é uma aplicação full stack web. O objetivo principal deste projeto foi desenvolver meu aprendizado com Spring construindo uma tela de autenticação de usuários.
 
-Demo do projeto: https://bit.ly/3ON2DmZ
+Demo do projeto: https://bit.ly/3FtxH7Y
 
 ## Layout web
 
